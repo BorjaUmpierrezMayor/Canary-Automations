@@ -1,0 +1,8 @@
+{
+  "CANARYAUTOMATIONS": {
+    "CompendioRegistrado": "Canary - Automations: compendio añadido a las fuentes del Medkit de Cauldron (prioridad {prioridad}).",
+    "BeguilingDefenses": {
+      "Restaurar": "¿Gastar un espacio de Magia de Pacto para recuperar {nombre}? (quedan {quedan})"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "CANARYAUTOMATIONS": {
+    "CompendioRegistrado": "Canary - Automations: compendium added to Cauldron's Medkit sources (priority {prioridad}).",
+    "BeguilingDefenses": {
+      "Restaurar": "Restore {nombre} by expending a Pact Magic spell slot? ({quedan} left)"
+    }
+  }
+}

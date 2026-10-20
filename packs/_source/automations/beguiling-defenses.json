@@ -1,0 +1,146 @@
+{
+  "_id": "canaryBegDefense",
+  "_key": "!items!canaryBegDefense",
+  "type": "feat",
+  "name": "Beguiling Defenses",
+  "img": "icons/magic/control/hypnosis-mesmerism-swirl.webp",
+  "folder": null,
+  "sort": 0,
+  "system": {
+    "source": {
+      "book": "PHB'24",
+      "page": "159",
+      "rules": "2024"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "Warlock (Archfey Patron) 10",
+    "description": {
+      "value": "<p>You are immune to the Charmed condition.</p><p>In addition, immediately after a creature you can see hits you with an attack roll, you can take a Reaction to reduce the damage you take by half (round down), and you can force the attacker to make a Wisdom saving throw against your spell save DC. On a failed save, the attacker takes Psychic damage equal to the damage you take.</p><p>Once you use this Reaction, you can't use it again until you finish a Long Rest unless you expend a Pact Magic spell slot (no action required) to restore your use of it.</p><hr /><p><strong>Automated:</strong> when a creature you can see hits you with an attack roll, you are asked whether to use it. Yes halves the damage and the attacker rolls the Wisdom save on its own.</p><p><strong>The save is always forced</strong> when you use it.</p><p><strong>Pact Magic:</strong> with no use left, you are offered to expend a Pact Magic slot to restore it right then.</p><p><strong>Not offered</strong> while you are Incapacitated, have already used your Reaction this round, or cannot see the attacker.</p>"
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "activities": {
+      "bgDefUsoActivid0": {
+        "_id": "bgDefUsoActivid0",
+        "type": "utility",
+        "name": "Beguiling Defenses",
+        "activation": {
+          "type": "special",
+          "condition": "Reaction: a creature you can see hits you with an attack roll"
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1"
+            }
+          ]
+        },
+        "target": {
+          "affects": {
+            "type": "self"
+          }
+        },
+        "range": {
+          "units": "self"
+        }
+      },
+      "bgDefSalvActivi0": {
+        "_id": "bgDefSalvActivi0",
+        "type": "save",
+        "name": "Beguiling Defenses: Psychic",
+        "activation": {
+          "type": "special"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting"
+          }
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "0"
+              },
+              "types": [
+                "psychic"
+              ]
+            }
+          ]
+        },
+        "target": {
+          "affects": {
+            "type": "creature",
+            "count": "1"
+          }
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "bgDefInmuEncant0",
+      "_key": "!items.effects!canaryBegDefense.bgDefInmuEncant0",
+      "name": "Beguiling Defenses",
+      "img": "icons/magic/control/hypnosis-mesmerism-swirl.webp",
+      "transfer": true,
+      "disabled": false,
+      "changes": [
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "charmed",
+          "priority": 20
+        }
+      ]
+    }
+  ],
+  "flags": {
+    "autoanimations": {
+      "isEnabled": false
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "canaryBeguilingDefenses",
+        "source": "canary-automations.automations",
+        "rules": "modern",
+        "version": "0.1.0"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "canaryBeguilingDefenses"
+          ]
+        },
+        "item": [
+          "canaryBeguilingDefenses"
+        ]
+      },
+      "activityIdentifiers": {
+        "use": "bgDefUsoActivid0",
+        "save": "bgDefSalvActivi0"
+      },
+      "hiddenActivities": [
+        "save"
+      ]
+    }
+  }
+}

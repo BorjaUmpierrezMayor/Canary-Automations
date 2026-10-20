@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+module.zip
+packs/*
+!packs/_source/
+.context/
+.agent/
+.claude/
+.DS_Store

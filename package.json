@@ -1,0 +1,17 @@
+{
+  "name": "canary-automations",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.config.mjs && node scripts/build-packs.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "packs": "node scripts/build-packs.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "3.0.4",
+    "esbuild": "^0.24.0",
+    "vitest": "^3.0.0"
+  }
+}

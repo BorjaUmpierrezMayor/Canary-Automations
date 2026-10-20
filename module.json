@@ -1,0 +1,65 @@
+{
+  "id": "canary-automations",
+  "title": "Canary - Automations",
+  "description": "Automatizaciones propias para dnd5e + midi-qol que se importan con el Medkit de Cauldron of Plentiful Resources. Su compendio se registra como fuente del Medkit con prioridad 4: solo se usa cuando Cauldron, Gambit's Premades y Midi Item Showcase no tienen ese rasgo. Incluye Beguiling Defenses (Warlock, Archfey Patron 10, reglas 2024).",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Borja"
+    }
+  ],
+  "url": "https://github.com/BorjaUmpierrezMayor/Canary-Automations",
+  "manifest": "https://github.com/BorjaUmpierrezMayor/Canary-Automations/releases/latest/download/module.json",
+  "download": "https://github.com/BorjaUmpierrezMayor/Canary-Automations/releases/download/v0.1.0/module.zip",
+  "socket": false,
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.351"
+  },
+  "esmodules": [
+    "dist/canary-automations.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "automations",
+      "label": "Canary - Automations",
+      "path": "packs/automations",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system"
+      }
+    ],
+    "requires": [
+      {
+        "id": "chris-premades",
+        "type": "module"
+      },
+      {
+        "id": "midi-qol",
+        "type": "module"
+      }
+    ]
+  }
+}

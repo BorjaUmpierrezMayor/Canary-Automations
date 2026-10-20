@@ -1,0 +1,44 @@
+# Al subir una etiqueta vX.Y.Z: pruebas, compilación (JS + compendio) y release con module.json y
+# module.zip, que es lo que Foundry descarga desde la URL del manifest.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+      - name: Versión y URL de descarga en module.json
+        run: |
+          node -e '
+            const fs = require("fs");
+            const m = JSON.parse(fs.readFileSync("module.json", "utf-8"));
+            m.version = process.env.GITHUB_REF_NAME.replace(/^v/, "");
+            m.download = `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/${process.env.GITHUB_REF_NAME}/module.zip`;
+            fs.writeFileSync("module.json", JSON.stringify(m, null, 2) + "\n");
+          '
+
+      - name: Empaquetar
+        run: zip -r module.zip module.json README.md dist lang packs/automations
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.json
+            module.zip
